@@ -1,4 +1,4 @@
-# vue
+# :star: vue :star:
 
 1.  :cloud: vue 中 data 的属性可以和 methods 中的方法同名吗？为什么？
 
