@@ -28,7 +28,7 @@
 
     ***
 
-3.  **super()**和 **super(props)**有什么区别？
+3.  **super()** 和 **super(props)** 有什么区别？
 
     react 中的 class 是基于 es6 的规范实现的, 继承是使用 extends 关键字实现继承的，子类必须在 constructor()中调用 super() 方法否则新建实例
     就会报错，报错的原因是 子类是没有自己的 this 对象的，它只能继承父类的 this 对象，然后对其进行加工，而 super()就是将父类中的 this 对象继承给子类的，没有 super() 子类就得不到 this 对象。
