@@ -227,6 +227,8 @@
       - 使用 this.$set(object, key, value)_（vue 无法监听 this.set 修改原有属性）_
       - 使用 Object.assign()直接赋值 _（推荐使用）_
 
+    ***
+
 24. :cloud: 实际工作中，你总结的 vue 最佳实践有哪些？
 
     详见[vue 官方文档/风格指南](https://cn.vuejs.org/v2/style-guide/)
