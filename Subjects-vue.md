@@ -21,9 +21,13 @@
     如果想要更改 checked 這個 prop 可以在 Vue 的 instance 中用以下這行程式發送 change 這個 event，並將目標的變動值傳給 checked 這個 prop。
     `this.$emit('change', $event.target.value);`
 
+    ***
+
 3.  :cloud: 在 vue 项目中如果 methods 的方法用箭头函数定义结果会怎么样？
 
     因为箭头函数默绑定父级作用域的上下文，所以不会绑定 vue 实例，所以 this 是 undefind
+
+    ***
 
 4.  :cloud: vue 渲染模板时怎么保留模板中的 HTML 注释呢？
 
@@ -32,10 +36,14 @@
         </template>
     ```
 
+    ***
+
 5.  :cloud: vue 变量名如果以\_、$开头的属性会发生什么问题？怎么访问到它们的值？
 
     以 \_ 或 $ 开头的 property 不会被 Vue 实例代理，因为它们可能和 Vue 内置的 property、API 方法冲突。你可以使用例如 `vm.$data.\_property` 的方式访问这些 property。
     详见[vue 官方文档](https://cn.vuejs.org/v2/api/#data)
+
+    ***
 
 6.  :cloud: 如何在子组件中访问父组件的实例？
 
@@ -46,6 +54,8 @@
     2. 在子组件里用$emit 向父组件触发一个事件，父组件监听这个事件
     3. 父组件把方法传入子组件中，在子组件里直接调用这个方法
 
+    ***
+
 7.  :cloud: 你有使用过 `babel-polyfill` 模块吗？主要是用来做什么的？
 
     Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的 API，比如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法（比如 Object.assign）都不会转码。
@@ -53,6 +63,8 @@
     举例来说，ES6 在 Array 对象上新增了 Array.from 方法。Babel 就不会转码这个方法。如果想让这个方法运行，必须使用 babel-polyfill，为当前环境提供一个垫片。
 
     Babel 默认不转码的 API 非常多，详细清单可以查看 `babel-plugin-transform-runtime` 模块的 `definitions.js` 文件。
+
+    ***
 
 8.  :cloud: vue 边界情况有哪些？
 
@@ -64,6 +76,8 @@
     4. 模板定义的替代品
     5. 控制更新
 
+    ***
+
 9.  :cloud: vue 使用 `v-for` 遍历对象时，是按什么顺序遍历的？如何保证顺序？
 
     1. 会先判断是否有 iterator 接口，如果有循环执行 next()方法
@@ -71,6 +85,8 @@
     2. 没有 iterator 的情况下，会调用 Object.keys()方法，在不同浏览器中，JS 引擎不能保证输出顺序一致
 
     3. 保证对象的输出顺序可以把对象放在数组中，作为数组的元素
+
+    ***
 
 10. :cloud: vue 如果想扩展某个现有的组件时，怎么做呢？
 
@@ -81,6 +97,8 @@
     3. HOC 封装
 
     4. 加 slot 扩展
+
+    ***
 
 11. :cloud: 实际工作中，你总结的 vue 最佳实践有哪些？
 
@@ -210,3 +228,5 @@
     10. 指令缩写
 
         **指令缩写 (用 : 表示 `v-bind:`、用 @ 表示 `v-on:` 和用 # 表示 `v-slot:`) 应该要么都用要么都不用。**
+
+    ***
