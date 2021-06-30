@@ -1,5 +1,7 @@
 # :star: vue :star:
 
+      > 正在连载中 ···
+
 1.  :cloud: vue 中 data 的属性可以和 methods 中的方法同名吗？为什么？
 
     `[Vue warn]: Method "myname" has already been defined as a data property.`
@@ -32,8 +34,8 @@
 4.  :cloud: vue 渲染模板时怎么保留模板中的 HTML 注释呢？
 
     ```
-        <template comments>
-        </template>
+    <template comments>
+    </template>
     ```
 
     ***
