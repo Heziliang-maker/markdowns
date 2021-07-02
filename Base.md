@@ -83,6 +83,79 @@
 
     ***
 
+7.  :cloud: EventLoop
+
+    ```
+    async function async1() {
+    console.log("=>", "async1 start");
+    await async2();
+    console.log("=>", "async1 end ");
+    }
+
+    async function async2() {
+      console.log("=>", "async2 start");
+    }
+
+     async1();
+    console.log("script start");
+
+    setTimeout(() => {
+      console.log("=>", "setTimeout");
+    });
+
+    new Promise((resolve) => {
+      console.log("=>", "promise1");
+      resolve();
+    }).then(() => {
+      console.log("=>", "promise2");
+    });
+
+    console.log("=>", "script end");
+
+    ```
+
+    > 事件循环过程:
+
+    1. 执行主线程的同步任务,调用 async1(), 先打印出`async1 start`
+    2. 从右至左,调用 async2().打印出`async2 start`
+    3. await 关键字阻塞后面代码,跳出函数,继续执行外层同步任务
+    4. 打印出`script start`
+    5. setTimeout 关键字,将回调推入宏任务队列
+    6. new Promise() 会立即执行,打印出`promise1`
+    7. then 关键字 将返回的 promise 推入微任务队列
+    8. 打印出 `script end`
+    9. 外面执行完回到 await 部分 相当于`Promise.resolve(undefined).then((undefined) => {}),` 继续推入微任务队列
+    10. 目前为止,执行栈任务清空,清空微任务队列,此时有两个微任务,根据"先进先出"原则,先打印`promise2`,再打印`promise1`
+    11. 第一轮事件循环结束,进入第二次事件循环，执行宏任务队列 定时器回调 打印`setTimeout`
+
+    > 宏任务:
+
+    > (macro)task，可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）。
+
+    > 包含:
+
+    - script(整体代码)
+    - setTimeout
+    - setInterval
+    - I/O
+    - UI 交互事件
+    - postMessage
+    - MessageChannel
+    - setImmediate(Node.js 环境)
+
+    > 微任务:
+    > microtask,可以理解是在当前 task 执行结束后立即执行的任务。也就是说，在当前 task 任务后，下一个 task 之前，在渲染之前。
+    > 所以它的响应速度相比 setTimeout（setTimeout 是 task）会更快，因为无需等渲染。也就是说，在某一个 macrotask 执行完后，就会将在它执行期间产生的所有 microtask 都执行完毕（在渲染前）。
+
+    > 包含:
+
+    - Promise.then
+    - Object.observe
+    - MutaionObserver
+    - process.nextTick(Node.js 环境)
+
+    ***
+
 ## Html
 
 1. :cloud: 说说你对 **text-transform** 属性的理解
