@@ -76,3 +76,23 @@ Git 的版本回退速度非常快，因为 Git 在内部有个指向当前版�
 - HEAD 指向的版本就是当前版本，因此，Git 允许我们在版本的历史之间穿梭，使用命令 `git reset --hard commit_id`。
 - 穿梭前，用 `git log` 可以查看提交历史，以便确定要回退到哪个版本。
 - 要重返未来，用 `git reflog` 查看命令历史，以便确定要回到未来的哪个版本。
+
+### 6.提交规范
+
+_`git commit -m 'aaa'`_
+
+- 参考 `vue` 规范(`Angular`)
+  - `feat` 增加新功能
+  - `fix` 修复问题/BUG
+  - `style` 代码风格相关无影响运行结果的
+  - `perf` 优化/性能提升
+  - `refactor` 重构
+  - `revert` 撤销修改
+  - `test` 测试相关
+  - `docs` 文档/注释
+  - `chore` 依赖更新/脚手架配置修改等
+  - `workflow` 工作流改进
+  - `ci` 持续集成
+  - `mod` 不确定分类的修改
+  - `wip` 开发中
+  - `types` 类型修改
